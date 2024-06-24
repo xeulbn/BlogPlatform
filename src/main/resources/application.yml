@@ -1,0 +1,14 @@
+spring:
+  thymeleaf:
+    encoding: UTF-8
+  application:
+    name: BlogPlatform
+
+  datasource:
+    url: jdbc:mysql://localhost:3305/exampledb
+    username: root
+    password: root1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+

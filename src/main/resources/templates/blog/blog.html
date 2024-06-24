@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Blog</title>
+</head>
+<body>
+<header>
+    <h1 th:text="'Welcome, ' + ${user.name}">Welcome</h1>
+</header>
+<main>
+    <p th:text="'Username: ' + ${user.username}"></p>
+    <p th:text="'Email: ' + ${user.email}"></p>
+</main>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>Post Form</title>
+    <style>
+        .button {
+            background-color: #8b4513; /* 갈색 */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #a0522d; /* 좀 더 밝은 갈색 */
+        }
+    </style>
+</head>
+<body>
+<form id="postForm" action="/post" method="post">
+    <div>
+        <label for="title">제목을 입력하세요</label>
+        <input type="text" id="title" name="title" required />
+    </div>
+    <div>
+        <label for="tags">태그 목록을 입력하세요</label>
+        <input type="text" id="tags" name="tags" required />
+    </div>
+    <div>
+        <label for="author"> 작성자 </label>
+        <input type="text" id="author" name="author" th:value="${username}"  />
+    </div>
+    <div>
+        <textarea id="content" name="content" rows="10" cols="50" required>
+                <img src="https://media.slrclub.com/2406/15/s05wt87fk453f44ho1.png" alt="logo.png" />
+                안녕하세요.
+            </textarea
+            >
+    </div>
+    <div>
+        <label for="image">이미지 추가</label>
+        <input type="file" id="image" name="image" />
+        <img
+                src="https://example.com/path/to/image.png"
+                alt="uploaded image"
+                id="uploadedImage"
+        />
+    </div>
+    <input
+            type="hidden"
+            id="publishStatus"
+            name="publishStatus"
+            value="false"
+    />
+    <div>
+        <button type="button" class="button" id="saveDraft">임시저장</button>
+        <button type="button" class="button" id="publishPost">출간하기</button>
+    </div>
+</form>
+
+<script>
+    document
+        .getElementById("publishPost")
+        .addEventListener("click", function () {
+            document.getElementById("publishStatus").value = "true";
+            document.getElementById("postForm").submit();
+        });
+
+    document
+        .getElementById("saveDraft")
+        .addEventListener("click", function () {
+            document.getElementById("publishStatus").value = "false";
+            document.getElementById("postForm").submit();
+        });
+</script>
+</body>
+</html>
