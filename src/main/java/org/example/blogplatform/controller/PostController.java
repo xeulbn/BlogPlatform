@@ -1,13 +1,8 @@
 package org.example.blogplatform.controller;
 
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.example.blogplatform.model.Post;
-import org.example.blogplatform.model.User;
 import org.example.blogplatform.service.PostService;
-import org.example.blogplatform.service.UserService;
-import org.example.blogplatform.util.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +15,6 @@ public class PostController {
 
     @Autowired
     private PostService postService;
-
 
     @GetMapping("/")
     public String showMainPage(Model model) {
@@ -41,6 +35,5 @@ public class PostController {
         postService.createOrUpdatePost(post);
         return "redirect:/";
     }
-
 
 }

@@ -1,19 +1,18 @@
 package org.example.blogplatform.util;
 
+import org.example.blogplatform.model.User;
+
 public class UserContext {
+    private static final ThreadLocal<User> USER_THREAD_LOCAL = ThreadLocal.withInitial(()->null);
 
-    private static final ThreadLocal<String> userHolder=new ThreadLocal<>();
-
-    public static void setUser(String user) {
-        userHolder.set(user);
+    public static void setUser(User user){
+        USER_THREAD_LOCAL.set(user);
     }
-
-    public static String getUser() {
-        return userHolder.get();
+    public static User getUser(){
+        return USER_THREAD_LOCAL.get();
     }
 
     public static void clear(){
-        userHolder.remove();
+        USER_THREAD_LOCAL.remove();
     }
-
 }
